@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>YACHT RESISTANCE AND STABILITY</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <style>
+        body {
+                                font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #addNumberSection {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 60%;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .error {
+            color: red;
+            margin-top: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Residuary Resistance Calculation Form -->
+<div id="addNumberSection">
+    <h2>YACHT RESISTANCE AND STABILITY</h2>
+    <form method="post" action="{% url 'Rr_3_parameters' %}">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="L">Length (L):</label>
+            <input type="text" name="L" required pattern="-?[0-9]+(\.[0-9]+)?" placeholder="Enter a numeric value between 10.00 and 10.15">
+            {% if form.L.errors %}
+                <div class="error">{{ form.L.errors.0 }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="B">Beam (B):</label>
+            <input type="text" name="B" required pattern="-?[0-9]+(\.[0-9]+)?" placeholder="Enter a numeric value between 2.76 and 3.66">
+            {% if form.B.errors %}
+                <div class="error">{{ form.B.errors.0 }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="T">Draught (T):</label>
+            <input type="text" name="T" required placeholder="Enter a numeric value between 0.64 and 1.13">
+            {% if form.T.errors %}
+                <div class="error">{{ form.T.errors.0 }}</div>
+            {% endif %}
+        </div>
+
+        <button type="submit">Calculate</button>
+    </form>
+
+    {% if form.errors %}
+        <div class="error">
+            <p>Please correct the following errors:</p>
+            <ul>
+                {% for error in form.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resistance Results</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #resultSection {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 60%;
+        }
+
+        #plotSection {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 35%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+        }
+
+        td {
+            background-color: #f0f0f0;
+            font-size: 16px;
+        }
+
+        h2 {
+            color: #4CAF50;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div id="resultSection">
+    <h2>Resistance</h2>
+    <table>
+        <tr>
+            <th>Froude Number</th>
+            <th>Residuary Resistance</th>
+            <th>Friction Resistance</th>
+            <th>Total Resistance</th>
+        </tr>
+        {% for result in results %}
+            <tr>
+                <td>{{ result.0|floatformat:3 }}</td>
+                <td>{{ result.1|floatformat:3 }}</td>
+                <td>{{ result.2|floatformat:3 }}</td>
+                <td>{{ result.3|floatformat:3 }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'main_form_parameters' %}" class="button">View Main Form Parameters</a>
+</div>
+
+<div id="plotSection">
+    <h2>Resistance vs. Froude Number</h2>
+    <canvas id="scatterPlot"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('scatterPlot').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'scatter',
+        data: {
+            datasets: [
+                {
+                    label: 'Residuary Resistance vs. Froude Number',
+                    data: [
+                        {% for result in results %}
+                            { x: {{ result.1 }}, y: {{ result.0 }} },
+                        {% endfor %}
+                    ],
+                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    pointRadius: 5,
+                },
+                {
+                    label: 'Friction Resistance vs. Froude Number',
+                    data: [
+                        {% for result in results %}
+                            { x: {{ result.2 }}, y: {{ result.0 }} },
+                        {% endfor %}
+                    ],
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    pointRadius: 5,
+                },
+                {
+                    label: 'Total Resistance vs. Froude Number',
+                    data: [
+                        {% for result in results %}
+                            { x: {{ result.3 }}, y: {{ result.0 }} },
+                        {% endfor %}
+                    ],
+                    backgroundColor: 'rgba(255, 206, 86, 0.5)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    pointRadius: 5,
+                },
+            ]
+        },
+        options: {
+            scales: {
+                x: {
+                    type: 'linear',
+                    position: 'bottom',
+                    title: {
+                        display: true,
+                        text: 'Resistance',
+                    },
+                },
+                y: {
+                    type: 'linear',
+                    position: 'left',
+                    title: {
+                        display: true,
+                        text: 'Froude Number',
+                    },
+                },
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Form Parameters</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            padding: 20px;
+        }
+
+        #parametersSection {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 60%;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+        }
+
+        td {
+            background-color: #f0f0f0;
+            font-size: 16px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div id="parametersSection">
+    <h2>Main Form Parameters</h2>
+    <table>
+        <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>longitudinal centre of buoyancy</td>
+            <td>{{ main_form_parameters1.0|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>prismatic coefficient</td>
+            <td>{{ main_form_parameters1.1|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>Length / (displacement^(1/3))</td>
+            <td>{{ main_form_parameters1.2|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>Beam / Draft</td>
+            <td>{{ main_form_parameters1.3|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>Length / Beam</td>
+            <td>{{ main_form_parameters1.4|floatformat:3 }}</td>
+        </tr>
+        <!-- Add additional parameters as needed -->
+    </table>
+
+    <table>
+        <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Length</td>
+            <td>{{ main_form_parameters2.0|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>Max Beam</td>
+            <td>{{ main_form_parameters2.1|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>Beam</td>
+            <td>{{ main_form_parameters2.2|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>Draft</td>
+            <td>{{ main_form_parameters2.3|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>Deep</td>
+            <td>{{ main_form_parameters2.4|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>Displacement</td>
+            <td>{{ main_form_parameters2.5|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>wetted surface</td>
+            <td>{{ main_form_parameters2.6|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>Ax</td>
+            <td>{{ main_form_parameters2.7|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>Ay</td>
+            <td>{{ main_form_parameters2.8|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>LBP</td>
+            <td>{{ main_form_parameters2.9|floatformat:3 }}</td>
+        </tr>
+        <!-- Add additional parameters as needed -->
+    </table>
+    <div class="button-container">
+        <a href="{% url 'stability_coefficients' %}" class="button">View Stability Coefficients</a>
+    </div>
+</div>
+
+
+
+</body>
+</html>
+
+
+
+
+

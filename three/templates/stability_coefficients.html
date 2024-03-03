@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stability and Coefficients</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            padding: 20px;
+        }
+
+        #parametersSection {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 60%;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+        }
+
+        td {
+            background-color: #f0f0f0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="parametersSection">
+    <h2>Stability and coefficients </h2>
+    <table>
+        <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>KMc</td>
+            <td>{{ stability.0|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>IT</td>
+            <td>{{ stability.1|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>IL</td>
+            <td>{{ stability.2|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>BM</td>
+            <td>{{ stability.3|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>BmL</td>
+            <td>{{ stability.4|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>KM</td>
+            <td>{{ stability.5|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>KB</td>
+            <td>{{ stability.6|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>KBc</td>
+            <td>{{ stability.7|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>LCF</td>
+            <td>{{ stability.8|floatformat:3 }}</td>
+        </tr>
+
+        <!-- Add additional parameters as needed -->
+    </table>
+
+    <table>
+        <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Block Coefficient</td>
+            <td>{{ coefficients.0|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>Midship section coefficient</td>
+            <td>{{ coefficients.1|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>Vertical prismatic coefficient</td>
+            <td>{{ coefficients.2|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>Waterplane Coefficient</td>
+            <td>{{ coefficients.3|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>longitudinal prismatic coefficient</td>
+            <td>{{ coefficients.4|floatformat:3 }}</td>
+        </tr>
+        <tr>
+            <td>the area of the middle section in ship</td>
+            <td>{{ coefficients.5|floatformat:3 }}</td>
+        </tr>
+
+        <!-- Add additional parameters as needed -->
+    </table>
+</div>
+
+</body>
+</html>
