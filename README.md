@@ -1,4 +1,3 @@
-# yacht_residuary_resistance_yacht
 # Yacht Ship Parameter Prediction
 
 ## Overview
