@@ -19,7 +19,7 @@ The machine learning model in this project takes the three main parameters of a 
 
 See the Yacht Ship Parameter Prediction model in action:
 
-![Yacht Ship Parameter Prediction Demo]![Rec0059-ezgif com-speed](https://github.com/pooryakhorsandy/yacht_residuary_resistance_django/assets/91316887/429c08f9-4c62-45dc-85b0-abfc78b69179)
+![Rec0059-ezgif com-speed](https://github.com/pooryakhorsandy/yacht_residuary_resistance_django/assets/91316887/429c08f9-4c62-45dc-85b0-abfc78b69179)
 
 
 In this demo, observe how the model takes input parameters and generates predictions for hydrostatic and hydrodynamic parameters.
